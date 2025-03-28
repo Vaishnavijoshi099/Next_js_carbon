@@ -9,7 +9,7 @@
   .imageTile {
     width: 100%;
     display: flex;
-    background-color: var(--color-white); // Use Carbon's white token
+    background-color: var(--color-white); 
     align-items: center;
     justify-content: center;
     img {
@@ -125,7 +125,7 @@
 
     .loginTile {
       width: 100%;
-      padding: var(--spacing-03); // Carbon's smaller padding token for mobile
+      padding: var(--spacing-03); 
     }
   }
 }

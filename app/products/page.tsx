@@ -139,9 +139,9 @@ export default function Home() {
         <div className="header">
           <h1 className="title">{translations?.products?.productsTitle || 'Products'}</h1>
 
-          <div className="search-bar">
+          {/* <div className="search-bar">
             <input type="text" placeholder={translations?.products?.search || "Search products..."} />
-          </div>
+          </div> */}
 
           <div className="language-selector">
             <select onChange={changeLanguage} value={language}>

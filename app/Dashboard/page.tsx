@@ -1,8 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Archive, Compare, Dashboard, SearchAdvanced, UserService, Settings, Product } from '@carbon/icons-react';
-import { Column, FlexGrid, Row, Tile, Modal } from '@carbon/react';
+import { Archive, Compare, Dashboard, SearchAdvanced, UserService, Settings, Product, DataBase } from '@carbon/icons-react';
+import { Column, FlexGrid, Row, Tile, Modal, Form } from '@carbon/react';
 import './dashboard.scss';
 
 // Dynamic import for language files
@@ -31,6 +31,7 @@ function Page() {
   const handleArchive = () => router.push('/Table');
   const handleProducts = () => router.push('/products');
   const handleBrowse = () => router.push('/Browse');
+  const handleForms = () => router.push('/Forms');
   const handleComingSoon = (feature: string) => {
     setModalContent(`${feature} feature is unavailable`);
     setModalOpen(true);
@@ -82,10 +83,10 @@ function Page() {
             </Column>
           </Tile>
 
-          <Tile className="compareTile" onClick={() => handleComingSoon('Compare')}>
+          <Tile className="compareTile" onClick={handleForms}>
             <Column lg={4} className="cols">
-              <Compare size={80} />
-              <h4 id="heading4">{translations.dashboard?.compare || 'Compare'}</h4>
+              <DataBase size={80} />
+              <h4 id="heading4">{translations.dashboard?.Forms || 'Forms'}</h4>
             </Column>
           </Tile>
         </Row>
