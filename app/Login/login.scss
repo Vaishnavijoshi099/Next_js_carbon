@@ -1,0 +1,131 @@
+@use '@carbon/react';
+
+.loginContainer {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  .imageTile {
+    width: 100%;
+    display: flex;
+    background-color: var(--color-white); // Use Carbon's white token
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 100%;
+      height: 600px;
+    }
+  }
+
+  .loginTile {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-04); // Carbon's padding token (spacing)
+    background: var(--color-white); // Carbon's white token
+    border-radius: var(--border-radius-lg); // Carbon's border radius token (large)
+  }
+
+  .formSection {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--color-white); // Carbon's white token
+  }
+
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white); // Carbon's white token
+    gap: var(--spacing-03); // Carbon's spacing token (gap between form elements)
+  }
+
+  h2 {
+    font-size: var(--font-size-03); // Carbon's font-size token (h2)
+    font-weight: var(--font-weight-semibold); // Carbon's font-weight token (semibold)
+    color: var(--color-text-primary); // Carbon's primary text color
+    text-align: center;
+  }
+
+  input {
+    width: 100%;
+    padding: var(--spacing-02); // Carbon's token for padding
+    border: 1px solid var(--color-border); // Carbon's border color token (light gray)
+    border-radius: var(--border-radius-sm); // Carbon's border radius token (small)
+    font-size: var(--font-size-01); // Carbon's font-size token (input text)
+    &:focus {
+      border-color: var(--color-primary); // Carbon's primary color (focused state)
+      outline: none;
+    }
+  }
+
+  .checkbox-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-02); // Carbon's font-size token (small text)
+    margin-bottom: var(--spacing-02); // Carbon's spacing token
+    .forgot-password {
+      margin-left: var(--spacing-04); // Carbon's spacing token
+      color: var(--color-link); // Carbon's link color token
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  #btn {
+    width: 100%;
+    background-color: var(--color-primary); // Carbon's primary color token
+    color: var(--color-white); // Carbon's white token
+    font-weight: var(--font-weight-bold); // Carbon's font-weight token (bold)
+    padding: var(--spacing-02); // Carbon's padding token
+    border-radius: var(--border-radius-sm); // Carbon's border radius token
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    &:hover {
+      background-color: var(--color-primary); // Carbon's primary color token on hover
+    }
+  }
+
+  .signup-link {
+    text-align: center;
+    font-size: var(--font-size-02); // Carbon's font-size token
+    margin-top: var(--spacing-02); // Carbon's spacing token
+
+    a {
+      color: var(--color-primary); // Carbon's primary color token for links
+      font-weight: var(--font-weight-semibold); // Carbon's font-weight token (semibold)
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .loginTile {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .loginContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .imageTile {
+      width: 100%;
+      height: 250px;
+    }
+
+    .loginTile {
+      width: 100%;
+      padding: var(--spacing-03); // Carbon's smaller padding token for mobile
+    }
+  }
+}

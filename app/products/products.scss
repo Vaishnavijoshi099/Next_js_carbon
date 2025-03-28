@@ -1,0 +1,121 @@
+@use '@carbon/react' as *;
+
+.container {
+  padding: 2rem;
+  background-color: #f7f7f7;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #111;
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  .search-bar {
+    width: 60%;
+    max-width: 600px;
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 30px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      outline: none;
+    }
+  }
+
+  .language-selector select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+}
+
+.productsGrid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 products per row */
+  gap: 2rem;
+}
+
+.productTile {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+
+  .productTitle {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 1rem;
+  }
+
+  .productPrice {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #B12704;
+    margin-bottom: 0.5rem;
+  }
+
+  .discount {
+    font-size: 1rem;
+    color: #d32f2f;
+  }
+
+  .productBrand,
+  .productCategory {
+    font-size: 0.875rem;
+    color: #777;
+    margin-top: 0.5rem;
+  }
+
+  .productCategory {
+    color: #007185; /* Amazon's category link color */
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1024px) {
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .productsGrid {
+    grid-template-columns: 1fr; 
+  }
+
+  .productTile {
+    padding: 1rem;
+  }
+}

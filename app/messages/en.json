@@ -1,0 +1,28 @@
+{
+    "dashboard": {
+      "dashboard": "Dashboard",
+      "archive": "Archive",
+      "products": "Products",
+      "browse": "Browse",
+      "compare": "Compare",
+      "admin": "Admin",
+      "manageUsers": "Manage Users",
+      "settings": "Settings",
+      "featureUnavailable": "Feature Unavailable",
+      "close": "Close"
+    },
+    "products": {
+      "productsTitle": "Products",
+      "all": "All",
+      "featured": "Featured",
+      "sale": "On Sale",
+      "productDetails": "Product Details",
+      "addToCart": "Add to Cart",
+      "productDescription": "Description",
+      "productBrand": "Brand",
+      "productCategory": "Category",
+      "productPrice": "Price",
+      "errorLoading": "Error loading products, please try again later."
+    }
+  }
+  

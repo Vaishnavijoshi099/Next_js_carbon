@@ -1,3 +1,16 @@
+@use '@carbon/react' as *;
+@use '@carbon/colors' as *;
+
+@use '@carbon/layout' as *;
+@use '@carbon/type' as *;
+
+@use '@carbon/react/scss/colors';
+
+@use '@carbon/react/scss/type';
+@use './products/products.scss';
+@use "./Login/login.scss";
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

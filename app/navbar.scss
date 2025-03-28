@@ -1,0 +1,60 @@
+@use '@carbon/react' as *;
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-05 $spacing-07;
+  background-color: $background;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid $layer-accent-01;
+
+  h3 {
+    @include type-style('heading-02');
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  a {
+    text-decoration: none;
+    color: $text-primary;
+    transition: color 0.3s ease-in-out;
+
+    h4 {
+      @include type-style('body-short-01');
+      font-weight: 500;
+      margin: 0 $spacing-05;
+      cursor: pointer;
+
+      &:hover {
+        color: $layer-active-01;
+      }
+    }
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: $spacing-04;
+    
+    svg {
+      fill: $icon-primary;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    h4 {
+      @include type-style('body-short-01');
+      font-weight: 500;
+      margin: 0 $spacing-05;
+      cursor: pointer;
+
+      &:hover {
+        color: $layer-active-01;
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+@use '@carbon/react' as *;
+
+
+.productDetailContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 50px 100px;
+  background-color: #f3f3f3;
+
+  .productDetailTile {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .productImageContainer {
+    flex: 1;
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+
+    img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .productDetails {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+
+    .productTitle {
+      font-size: 28px;
+      font-weight: bold;
+      color: #111;
+      margin-bottom: 10px;
+    }
+
+    .productDescription {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .productPrice {
+      font-size: 24px;
+      font-weight: bold;
+      color: #b12704;
+      margin-bottom: 10px;
+    }
+
+    .productCategory,
+    .productBrand,
+    .productStock,
+    .productRating {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .productRating {
+      color: #ff9900;
+      font-size: 16px;
+    }
+
+    .buttonContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+
+      .addToCart,
+      .buyNow {
+        font-size: 16px;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+      }
+
+      .addToCart {
+        background-color: #ffd814;
+        color: #111;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #f7ca00;
+        }
+      }
+
+      .buyNow {
+        background-color: #ff9900;
+        color: white;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #e68a00;
+        }
+      }
+    }
+  }
+}

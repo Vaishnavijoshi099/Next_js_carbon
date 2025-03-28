@@ -1,0 +1,28 @@
+{
+    "dashboard": {
+      "dashboard": "Tableau de bord",
+      "archive": "Archive",
+      "products": "Produits",
+      "browse": "Explorer",
+      "compare": "Comparer",
+      "admin": "Administrateur",
+      "manageUsers": "Gérer les Utilisateurs",
+      "settings": "Paramètres",
+      "featureUnavailable": "Fonctionnalité Indisponible",
+      "close": "Fermer"
+    },
+    "products": {
+      "productsTitle": "Produits",
+      "all": "Tous",
+      "featured": "En Vedette",
+      "sale": "En Solde",
+      "productDetails": "Détails du Produit",
+      "addToCart": "Ajouter au Panier",
+      "productDescription": "Description",
+      "productBrand": "Marque",
+      "productCategory": "Catégorie",
+      "productPrice": "Prix",
+      "errorLoading": "Erreur de chargement des produits, veuillez réessayer plus tard."
+    }
+  }
+  
