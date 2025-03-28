@@ -4,8 +4,9 @@ import TextInput from "../Components/SharedComponent/TextInput";
 import Dropdown from "../Components/SharedComponent/Dropdown";
 import Button from "../Components/SharedComponent/Button";
 import { DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell } from "@carbon/react";
-import "/app/navbar.scss";
+
 import "./browse.scss";
+import "/app/navbar.scss";
 
 const Page = () => {
   const [empId, setEmpId] = useState("");

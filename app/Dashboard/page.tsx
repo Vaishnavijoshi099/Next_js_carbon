@@ -5,14 +5,14 @@ import { Archive, Compare, Dashboard, SearchAdvanced, UserService, Settings, Pro
 import { Column, FlexGrid, Row, Tile, Modal, Form } from '@carbon/react';
 import './dashboard.scss';
 
-// Dynamic import for language files
+
 const loadLanguage = async (lang: string) => {
   try {
     const module = await import(`../messages/${lang}.json`);
     return module.default;
   } catch (error) {
     console.error("Error loading language:", error);
-    return {}; // Fallback to an empty object if language loading fails
+    return {};
   }
 };
 
@@ -24,7 +24,6 @@ function Page() {
   const [translations, setTranslations] = useState<any>({});
 
   useEffect(() => {
-    // Load the language translations on mount and whenever `language` changes
     loadLanguage(language).then((data) => setTranslations(data));
   }, [language]);
 
@@ -50,7 +49,7 @@ function Page() {
           <Dashboard size={30} /> &nbsp;{translations.dashboard?.dashboard || 'Dashboard'}
         </h1>
 
-        {/* Language Dropdown */}
+      
         <div className="language-selector">
           <select onChange={changeLanguage} value={language}>
             <option value="en">English</option>
@@ -112,8 +111,6 @@ function Page() {
           </Row>
         </FlexGrid>
       </div>
-
-      {/* Modal for Feature Unavailable */}
       <Modal
         open={modalOpen}
         modalHeading={translations.dashboard?.featureUnavailable || 'Feature Unavailable'}

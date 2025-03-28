@@ -1,105 +1,95 @@
 @use '@carbon/react' as *;
+@use '@carbon/colors' as *;
 
 .container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-  
-  .textInput1 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  
-  .textInput {
-    flex: 1;
-    input {
-      width: 100%;
-      padding: 10px;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      transition: 0.3s;
-      
-      &:focus {
-        border-color: #0f62fe;
-        box-shadow: 0 0 5px rgba(15, 98, 254, 0.3);
-      }
-    }
-  }
-  
-  .btn1 {
-    padding: 10px 16px;
-    background: #0f62fe;
-    color: white;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-    border: none;
-  
-    &:hover {
-      background: #0043ce;
-    }
-  }
-  
-  .custom-dropdown {
-    margin-top: 15px;
-    select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: 2px solid #ddd;
-      transition: 0.3s;
-  
-      &:focus {
-        border-color: #0f62fe;
-      }
-    }
-  }
-  
-  .table-container {
-    margin-top: 20px;
-  }
-  
-  .carbon-table {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: $background;
+  border-radius: 10px;
+}
+
+.textInput1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.textInput {
+  flex: 1;
+  input {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: 0.3s;
+    
+  }
+}
+
+.btn1 {
+  padding: 13px 16px;
+  background: $interactive;
+  color: $background;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
   
-    thead {
-      background: #0f62fe;
-      color: white;
-    }
-  
-    th, td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-  
-    tbody tr {
-      transition: 0.3s;
-  
-      &:hover {
-        background: rgba(15, 98, 254, 0.1);
-      }
+  &:hover {
+    background: $interactive;
+  }
+}
+
+.custom-dropdown {
+  margin-top: 15px;
+  select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    transition: 0.3s;
+    
+    &:focus {
+      border-color: $interactive;
     }
   }
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+.carbon-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
   
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .textInput1 {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  
-    .btn1 {
-      width: 100%;
-    }
+  thead {
+    background: $interactive;
+    color: $background;
   }
   
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tbody tr {
+    transition: 0.3s;
+  
+  }
+}
+@media (max-width: 768px) {
+  .textInput1 {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn1 {
+    width: 100%;
+  }
+}

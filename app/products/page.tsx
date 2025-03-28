@@ -80,7 +80,7 @@ export default function Home() {
         }
         const data = await res.json();
         setProducts(data.products);
-        setFilteredProducts(data.products); // Set all products initially
+        setFilteredProducts(data.products); 
       } catch (error) {
         console.error('Error fetching products:', error);
         setError(translations?.products?.errorLoading || 'Failed to load products');
@@ -143,26 +143,16 @@ export default function Home() {
             <input type="text" placeholder={translations?.products?.search || "Search products..."} />
           </div> */}
 
-          <div className="language-selector">
+          {/* <div className="language-selector">
             <select onChange={changeLanguage} value={language}>
               <option value="en">English</option>
               <option value="es">Español</option>
               <option value="fr">Français</option>
             </select>
-          </div>
+          </div> */}
         </div>
 
-        <div className="filterControls">
-          <ContentSwitcher
-            onChange={({ index = 0 }) => handleFilterChange(index)}
-            selectedIndex={selectedFilter === 'all' ? 0 : selectedFilter === 'featured' ? 1 : 2}
-            size="md"
-          >
-            <Switch name="all" text={translations?.products?.all || 'All'} />
-            <Switch name="featured" text={translations?.products?.featured || 'Featured'} />
-            <Switch name="sale" text={translations?.products?.sale || 'On Sale'} />
-          </ContentSwitcher>
-        </div>
+       
 
         <div className="productsGrid">
           {filteredProducts.map((product) => (

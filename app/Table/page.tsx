@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import './table.scss';
+import '/app/navbar.scss';
 
 import {
     DataTable,
