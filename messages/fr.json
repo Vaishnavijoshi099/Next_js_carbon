@@ -1,0 +1,18 @@
+{
+  "language": "Langue",
+  "english": "Anglais",
+  "spanish": "Espagnol",
+  "french": "Français",
+  "dashboard": {
+    "dashboard": "Tableau de bord",
+    "archive": "Archive",
+    "products": "Produits",
+    "browse": "Parcourir",
+    "forms": "Formulaires",
+    "admin": "Administration",
+    "manageUsers": "Gérer les utilisateurs",
+    "settings": "Paramètres",
+    "featureUnavailable": "Fonctionnalité indisponible",
+    "close": "Fermer"
+  }
+}

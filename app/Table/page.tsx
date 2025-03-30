@@ -27,6 +27,7 @@ import {
 import { TrashCan, Save, Download } from '@carbon/icons-react';
 import Link from 'next/link';
 
+
 const headers = [
     { key: 'id', header: 'ID' },
     { key: 'name', header: 'Name' },
@@ -41,7 +42,7 @@ const rows = [
 ];
 
 export default function Page() {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     return (
         <>
         

@@ -2,9 +2,9 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button, Checkbox, Column, FlexGrid, Form, PasswordInput, Row, TextInput, Tile } from "@carbon/react";
-import Link from "next/link";
-import { useRouter } from 'next/navigation';
 import './login.scss';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const router = useRouter();

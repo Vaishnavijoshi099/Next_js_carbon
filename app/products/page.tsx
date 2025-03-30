@@ -6,15 +6,6 @@ import { Loading, ContentSwitcher, Switch, FlexGrid, Row, Column, Tile } from '@
 import './products.scss';
 import '/app/navbar.scss';
 
-const loadLanguage = async (lang: string) => {
-  try {
-    const module = await import(`../messages/${lang}.json`);
-    return module.default;
-  } catch (error) {
-    console.error('Error loading language:', error);
-    return {};
-  }
-};
 
 interface Product {
   id: number;
@@ -65,19 +56,13 @@ export default function Home() {
   const [translations, setTranslations] = useState<any>({});
   const router = useRouter();
 
-  // Fetch and load language on language change
-  useEffect(() => {
-    loadLanguage(language).then((data) => setTranslations(data));
-  }, [language]);
+ 
 
   // Fetch product data
   useEffect(() => {
     async function fetchProducts() {
       try {
         const res = await fetch('https://dummyjson.com/products');
-        if (!res.ok) {
-          throw new Error('Failed to fetch products');
-        }
         const data = await res.json();
         setProducts(data.products);
         setFilteredProducts(data.products); 
@@ -92,30 +77,10 @@ export default function Home() {
     fetchProducts();
   }, [translations]);
 
-  // Filter products based on selected filter
-  const handleFilterChange = (selectedIndex: number) => {
-    let filtered = [...products];
-
-    if (selectedIndex === 1) {
-      filtered = products.filter(product => product.rating >= 4); // Featured products
-    } else if (selectedIndex === 2) {
-      filtered = products.filter(product => product.discountPercentage > 20); // On-sale products
-    }
-
-    setSelectedFilter(selectedIndex === 0 ? 'all' : selectedIndex === 1 ? 'featured' : 'sale');
-    setFilteredProducts(filtered);
-  };
-
+  
   // Navigate to product details page
   const handleTileClick = (product: Product) => {
     router.push(`/products/${product.id}`);
-  };
-
-  // Change language function
-  const changeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedLang = event.target.value;
-    setLanguage(selectedLang);
-    loadLanguage(selectedLang).then((data) => setTranslations(data));
   };
 
   if (loading) {
@@ -139,17 +104,6 @@ export default function Home() {
         <div className="header">
           <h1 className="title">{translations?.products?.productsTitle || 'Products'}</h1>
 
-          {/* <div className="search-bar">
-            <input type="text" placeholder={translations?.products?.search || "Search products..."} />
-          </div> */}
-
-          {/* <div className="language-selector">
-            <select onChange={changeLanguage} value={language}>
-              <option value="en">English</option>
-              <option value="es">Español</option>
-              <option value="fr">Français</option>
-            </select>
-          </div> */}
         </div>
 
        

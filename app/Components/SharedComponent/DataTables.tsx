@@ -1,90 +1,57 @@
-// import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@carbon/react';
-// import React from 'react'
 
-// function DataTables() {
-//     type Row = {
-//         id: string;
-//         name: string;
-//         rule: string;
-//         status?: string;
-//         Status?: string;
-//         other: string;
-//         example: string;
-//     };
+import { DataTable, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@carbon/react'
+import React from 'react'
 
-//     const rows: Row[] = [{
-//         id: 'load-balancer-1',
-//         name: 'Load Balancer 1',
-//         rule: 'Round robin',
-//         Status: 'Starting',
-//         other: 'Test',
-//         example: '22'
-//       }, {
-//         id: 'load-balancer-2',
-//         name: 'Load Balancer 2',
-//         rule: 'DNS delegation',
-//         status: 'Active',
-//         other: 'Test',
-//         example: '22'
-//       }, {
-//         id: 'load-balancer-3',
-//         name: 'Load Balancer 3',
-//         rule: 'Round robin',
-//         status: 'Disabled',
-//         other: 'Test',
-//         example: '22'
-//       }, {
-//         id: 'load-balancer-4',
-//         name: 'Load Balancer 4',
-//         rule: 'Round robin',
-//         status: 'Disabled',
-//         other: 'Test',
-//         example: '22'
-//       }, {
-//         id: 'load-balancer-5',
-//         name: 'Load Balancer 5',
-//         rule: 'Round robin',
-//         status: 'Disabled',
-//         other: 'Test',
-//         example: '22'
-//       }, {
-//         id: 'load-balancer-6',
-//         name: 'Load Balancer 6',
-//         rule: 'Round robin',
-//         status: 'Disabled',
-//         other: 'Test',
-//         example: '22'
-//       }, {
-//         id: 'load-balancer-7',
-//         name: 'Load Balancer 7',
-//         rule: 'Round robin',
-//         status: 'Disabled',
-//         other: 'Test',
-//         example: '22'
-//       }];
-//       const headers = ['Name', 'Rule', 'Status', 'Other', 'Example'];
+function DataTables() {
+ const headers = [
+        { key: "id", header: "Employee Id" },
+        { key: "name", header: "Name" },
+        { key: "email", header: "Email" },
+      ];
+    
+      const rows = [
+        { id: "101", name: "John Doe", email: "john@example.com" },
+        { id: "102", name: "Jane Smith", email: "jane@example.com" },
+        { id: "103", name: "Alice Johnson", email: "alice@example.com" },
+        { id: "104", name: "Michael Brown", email: "michael@example.com" },
+        { id: "105", name: "Emily Davis", email: "emily@example.com" },
+        { id: "106", name: "David Wilson", email: "david@example.com" },
+        { id: "107", name: "Sophia Martinez", email: "sophia@example.com" },
+        { id: "108", name: "James Anderson", email: "james@example.com" },
+        { id: "109", name: "Olivia Thomas", email: "olivia@example.com" },
+        { id: "110", name: "Daniel White", email: "daniel@example.com" },
+      ];
       
-//   return (
-//     <div>
-//       return <Table aria-label="sample table">
-//               return <TableCell key={key}>{row[key as keyof Row]}</TableCell>;
-//             <TableRow>
-//               {headers.map(header => <TableHeader id={header.key} key={header}>
-//                   {header}
-//                 </TableHeader>)}
-//             </TableRow>
-//           </TableHead>
-//           <TableBody>
-//             {rows.map(row => <TableRow key={row.id}>
-//                 {Object.keys(row).filter(key => key !== 'id').map(key => {
-//               return <TableCell key={key}>{row[key]}</TableCell>;
-//             })}
-//               </TableRow>)}
-//           </TableBody>
-//         </Table>;
-//     }
-//     </div>
-//   )
-// }
+    
 
-// export default DataTables
+  return (
+    <div>
+       <DataTable rows={rows} headers={headers}>
+            {({ rows, headers, getTableProps, getHeaderProps, getRowProps }) => (
+              <Table {...getTableProps()}>
+                <TableHead>
+                  <TableRow>
+                    {headers.map((header) => (
+                      <TableHeader {...getHeaderProps({ header })} key={header.key}>
+                        {header.header}
+                      </TableHeader>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row) => (
+                    <TableRow {...getRowProps({ row })} key={row.id}>
+                      {row.cells.map((cell) => (
+                        <TableCell key={cell.id}>{cell.value}</TableCell>
+                      ))}
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </DataTable>
+    </div>
+  )
+}
+
+export default DataTables

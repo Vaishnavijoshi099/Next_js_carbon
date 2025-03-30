@@ -1,12 +1,10 @@
 @use '@carbon/react' as *;
 @use '@carbon/colors' as *;
-
 @use '@carbon/layout' as *;
 @use '@carbon/type' as *;
 
-@use '@carbon/react/scss/colors';
 
-@use '@carbon/react/scss/type';
+@use '@carbon/react/scss/colors';
 @use "./app/Browse/browse.scss";
 @use "./Dashboard/dashboard.scss";
 @use './products/products.scss';

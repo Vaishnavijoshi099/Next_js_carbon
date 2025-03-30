@@ -1,121 +1,10 @@
 @use '@carbon/react' as *;
-@use '@carbon/colors';
-@use '@carbon/layout';
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #161616;
-    color: #fff;
-    padding: 1rem 2rem;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  
-    h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
+@use '@carbon/colors' as *;
+@use '@carbon/layout' as *;
+@use '@carbon/type' as *;
 
-    .g100 {
-      background-color: #161616; 
-      color: #ffffff;
-  }
-  
-  .white {
-      background-color: #ffffff; 
-      color: #000000;
-  }
-  
-  nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px;
-      background-color: inherit; 
-  }
-  
-  .icons {
-      cursor: pointer;
-  }
-  
-  .theme-icon {
-      background-color: transparent;
-      color: #ffffff;
-  }
-  
-  .white .theme-icon {
-      color: #000000;
-  }
-  
-
-  
-    .icons {
-      display: flex;
-      gap: 1rem;
-      margin-left: 900px;
-      
-      svg {
-        cursor: pointer;
-        fill: #fff;
-        transition: transform 0.2s ease-in-out;
-  
-        &:hover {
-          transform: scale(1.1);
-          fill: #0f62fe; 
-        }
-      }
-    }
-  }nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-05 $spacing-07;
-    background-color: $layer;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-bottom: 2px solid $layer-accent-01;
-  
-    h3 {
-      @include type-style('heading-02');
-      font-weight: 600;
-      color: $text-primary;
-    }
-  
-    a {
-      text-decoration: none;
-      color: $text-primary;
-      transition: color 0.3s ease-in-out;
-  
-      h4 {
-        @include type-style('body-short-01');
-        font-weight: 500;
-        margin: 0 $spacing-05;
-        cursor: pointer;
-  
-        &:hover {
-          color: $layer-active-01;
-        }
-      }
-    }
-  
-    .icons {
-      display: flex;
-      align-items: center;
-      gap: $spacing-04;
-      
-      svg {
-        fill: $icon-primary;
-        cursor: pointer;
-        transition: transform 0.2s ease-in-out;
-  
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
-    }
-  }
-  
-
-  #heading1{
-    margin-top: 20px;
+#heading1{
+    margin-top: $spacing-06;
     margin-left: $spacing-05;
   }
 
@@ -123,7 +12,7 @@ nav {
     display: flex;
     justify-content: center;
     text-align: center;
-    gap: 20px;
+    gap: $spacing-06;
     margin-top: $spacing-09;
   }
   .cols{
@@ -147,13 +36,13 @@ nav {
     
     .language-selector select {
       background-color: transparent;
-      color: #161616;
-      border: 1px solid #D6D6D6;
-      padding: 8px 16px;
-      font-size: 14px;
+      color: $layer-selected-inverse;
+      border: $spacing-01 solid #D6D6D6;
+      padding: $spacing-03 $spacing-05;
+      font-size: $spacing-05;
       font-weight: 400;
       cursor: pointer;
-      border-radius: 4px;
+      border-radius: $spacing-02;
       appearance: none;
       width: 150px;
       text-align: center;
@@ -162,12 +51,12 @@ nav {
     
     .language-selector select:focus {
       outline: none;
-      border-color: #097cdb;
+      border-color: $border-interactive;
     }
     
     .language-selector select option {
-      background-color: #F4F4F4;
-      color: #161616;
+      background-color: $background;
+      color: $layer-selected-inverse ;
     }
     
     .language-selector::after {
@@ -176,8 +65,8 @@ nav {
       top: 50%;
       right: 10px;
       transform: translateY(-50%);
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid #161616;
+      border-left: $spacing-02 solid transparent;
+      border-right: $spacing-02 solid transparent;
+      border-top: $spacing-02 solid $layer-selected-inverse;
     }
     

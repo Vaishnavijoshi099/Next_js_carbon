@@ -1,5 +1,6 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
+import { TextInput as CarbonTextInput, Button } from "@carbon/react"; // Import Carbon's TextInput and Button
 
 interface TextInputProps {
   label?: string;
@@ -20,17 +21,33 @@ const TextInput: React.FC<TextInputProps> = ({
   className = "",
   disabled = false,
 }) => {
+  const [isButtonVisible, setButtonVisible] = useState(false);
+
+  // Show button if input is not empty
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(event);
+    setButtonVisible(event.target.value.length > 0); // Show button when text exists
+  };
+
   return (
     <div className={`text-input-container ${className}`}>
-      {label && <label className="text-input-label">{label}</label>}
-      <input
-        type={type}
+      <CarbonTextInput
+        id="custom-text-input"
+        labelText={label}
         value={value}
-        onChange={onChange}
+        onChange={handleInputChange}
         placeholder={placeholder}
-        className="text-input-field"
+        type={type}
         disabled={disabled}
+        className="text-input-field"
       />
+      
+
+      {isButtonVisible && (
+        <Button kind="primary" className="text-input-button">
+          Submit
+        </Button>
+      )}
     </div>
   );
 };
