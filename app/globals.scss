@@ -1,15 +1,14 @@
-@use '@carbon/react' as *;
+@use '@carbon/react';
 @use '@carbon/colors' as *;
 @use '@carbon/layout' as *;
 @use '@carbon/type' as *;
-
-
 @use '@carbon/react/scss/colors';
 @use "./app/Browse/browse.scss";
 @use "./Dashboard/dashboard.scss";
 @use './products/products.scss';
 @use "./Login/login.scss";
-
+@use "./Forms/forms.scss";
+@use "/app/navbar.scss";
 
 
 :root {

@@ -1,5 +1,4 @@
-import { AsleepFilled, Logout, SettingsServices, User } from '@carbon/icons-react'
-import React from 'react'
+import {  Logout } from '@carbon/icons-react'
 import './navbar.scss';
 import Link from 'next/link';
 

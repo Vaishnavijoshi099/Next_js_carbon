@@ -3,37 +3,37 @@
 
 .container {
   max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: $spacing-08 auto;
+  padding: $spacing-06;
   background: $background;
-  border-radius: 10px;
+  border-radius: $spacing-04;
 }
 
 .textInput1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: $spacing-04;
 }
 
 .textInput {
   flex: 1;
   input {
     width: 100%;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    padding: $spacing-04;
+    border: $spacing-01 solid #ddd;
+    border-radius: $spacing-03;
     transition: 0.3s;
     
   }
 }
 
 .btn1 {
-  padding: 13px 16px;
+  padding:  $spacing-04 $spacing-03;
   background: $interactive;
   color: $background;
   font-weight: 700;
-  border-radius: 6px;
+  border-radius: $spacing-03;
   cursor: pointer;
   transition: 0.3s;
   border: none;
@@ -44,12 +44,12 @@
 }
 
 .custom-dropdown {
-  margin-top: 15px;
+  margin-top: $spacing-05;
   select {
     width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 2px solid #ddd;
+    padding: $spacing-04;
+    border-radius: $spacing-03;
+    border: $spacing-01 solid #ddd;
     transition: 0.3s;
     
     &:focus {
@@ -59,13 +59,13 @@
 }
 
 .table-container {
-  margin-top: 20px;
+  margin-top: $spacing-06;
 }
 
 .carbon-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: $spacing-03;
   
   thead {
     background: $interactive;
@@ -73,9 +73,9 @@
   }
   
   th, td {
-    padding: 12px;
+    padding: $spacing-04;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 0.0625rem solid #ddd;
   }
   
   tbody tr {

@@ -2,11 +2,14 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button, Checkbox, Column, FlexGrid, Form, PasswordInput, Row, TextInput, Tile } from "@carbon/react";
-import './login.scss';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function LoginPage() {
+interface LoginPageProps {
+  onLogin?: (credentials: { username: string; password: string }) => void; // Optional prop for testing
+}
+
+export default function LoginPage({ onLogin }: Readonly<LoginPageProps>) {
   const router = useRouter();
 
   const formik = useFormik({
@@ -21,7 +24,13 @@ export default function LoginPage() {
     }),
     onSubmit: (values) => {
       console.log(values);
-      router.push("/Dashboard");
+
+      // Call the onLogin prop if provided (for testing purposes)
+      if (onLogin) {
+        onLogin({ username: values.username, password: values.password });
+      } else {
+        router.push("/Dashboard"); // Default behavior
+      }
     },
   });
 
@@ -40,33 +49,38 @@ export default function LoginPage() {
               <Form onSubmit={formik.handleSubmit}>
                 <TextInput
                   id="username"
-                  labelText="Username"
+                  labelText="username"
                   placeholder="Enter username"
                   {...formik.getFieldProps('username')}
                   invalid={formik.touched.username && !!formik.errors.username}
                   invalidText={formik.errors.username}
                 />
-                <br></br>
+                <br />
 
                 <PasswordInput
                   id="password"
-                  labelText="Password"
+                  labelText="password"
                   autoComplete="true"
                   placeholder="Enter the password"
                   {...formik.getFieldProps('password')}
                   invalid={formik.touched.password && !!formik.errors.password}
                   invalidText={formik.errors.password}
                 />
-                <br></br>
+                <br />
                 <div className="checkbox-group">
-                  <Checkbox labelText="Remember Me" id="remember_me" /><br></br>
-                  <Link href="/forgot-password" className="forgot-password">Forgot Password?</Link>
+                  <Checkbox
+                    labelText="Remember Me"
+                    id="remember_me"
+                    {...formik.getFieldProps('rememberMe')}
+                  />
+                  <br />
+                  <Link href="/" className="forgot-password">Forgot Password?</Link>
                 </div>
 
                 <Button id="btn" kind="primary" type="submit">Login</Button>
 
                 <p className="signup-link">
-                  Don't have an account? <Link href="/signup">Sign up</Link>
+                  Don't have an account? <Link href="/">Sign up</Link>
                 </p>
               </Form>
             </Tile>

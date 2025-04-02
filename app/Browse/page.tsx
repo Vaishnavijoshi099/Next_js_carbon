@@ -2,22 +2,16 @@
 import React, { useState } from "react";
 import TextInput from "../Components/SharedComponent/TextInput";
 import Dropdown from "../Components/SharedComponent/Dropdown";
-import { DataTable, TableContainer, Table, TableHead, TableRow, TableHeader, TableBody, TableCell } from "@carbon/react";
+import {  TableContainer } from "@carbon/react";
 
 import "./browse.scss";
-import "/app/navbar.scss";
+import "../navbar.scss";
 import DataTables from "../Components/SharedComponent/DataTables";
 
 const Page = () => {
   const [empId, setEmpId] = useState("");
   const[name,setName]=useState("");
   const [selectedOption, setSelectedOption] = useState("");
-
-  // Sample Data
- 
-  const handleButtonClick = () => {
-    alert(`Name: ${empId}, Selected: ${selectedOption}`);
-  };
 
   return (
     <div className="container">

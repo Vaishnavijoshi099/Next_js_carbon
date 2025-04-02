@@ -21,7 +21,8 @@ const TextInput: React.FC<TextInputProps> = ({
   className = "",
   disabled = false,
 }) => {
-  const [isButtonVisible, setButtonVisible] = useState(false);
+  const [ButtonVisible, setButtonVisible] = useState(false);
+
 
   // Show button if input is not empty
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +44,7 @@ const TextInput: React.FC<TextInputProps> = ({
       />
       
 
-      {isButtonVisible && (
+      {ButtonVisible && (
         <Button kind="primary" className="text-input-button">
           Submit
         </Button>

@@ -1,119 +1,139 @@
-'use client';  // <-- Ensuring the component is a client-side component
-
-import React, { useState } from 'react';
+'use client';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { submitForm } from '../actions/formActions';
-import { useNavigate } from 'react-router-dom';
-import { Column, Dropdown, Row, TextInput, Button } from '@carbon/react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { RootState, AppDispatch } from '../redux/store';
+import { updateForm } from '../redux/formSlice';
+import { Dropdown, TextInput, Button, Row, Column, FlexGrid, Form } from '@carbon/react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
-const Page = () => {  // <-- Change the component name to a capitalized "Page"
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  
-  const formData = useSelector((state: { form: { dropdown1: string; dropdown2: string; textInput1: string; textInput2: string; textInputButton: string; } }) => state.form);
-  
-  const [dropdown1, setDropdown1] = useState(formData.dropdown1);
-  const [dropdown2, setDropdown2] = useState(formData.dropdown2);
-  const [textInput1, setTextInput1] = useState(formData.textInput1);
-  const [textInput2, setTextInput2] = useState(formData.textInput2);
-  const [textInputButton, setTextInputButton] = useState(formData.textInputButton);
-  
-  const [isReadOnly, setIsReadOnly] = useState(false);
+const FormComponent = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const formState = useSelector((state: RootState) => state.form);
+  const searchParams = useSearchParams();
+  const isReadOnly = searchParams.get('isReadOnly') === 'true';
+  const router = useRouter();
 
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Prevent page reload on submit
-    const formValues = {
-      dropdown1,
-      dropdown2,
-      textInput1,
-      textInput2,
-      textInputButton,
-    };
-    dispatch(submitForm(formValues));
-    navigate('/dashboard');  // Redirect to Dashboard
+  // Update initialValues to include textInputAddress
+  const formik = useFormik({
+    initialValues: {
+      dropdown1: formState.dropdown1 || '',
+      dropdown2: formState.dropdown2 || '',
+      textInput1: formState.textInput1 || '',
+      textInput2: formState.textInput2 || '',
+      textInputAddress: formState.textInputAddress || '', // New field added here
+    },
+    validationSchema: Yup.object({
+      textInput1: Yup.string().required('Name is required'),
+      textInput2: Yup.string().email('Invalid email address').required('Email is required'),
+      textInputAddress: Yup.string().required('Address is required'),
+    }),
+    onSubmit: (values) => {
+      console.log('Form Submitted:', values);
+      dispatch(updateForm(values)); 
+      router.push('/Dashboard');
+    },
+  });
+
+  // Handle dropdown and text field changes, and update Redux state
+  const handleDropdownChange = (field: string, value: string) => {
+    formik.setFieldValue(field, value); // Update Formik's internal state
+    dispatch(updateForm({ ...formik.values, [field]: value })); // Update Redux state
   };
 
-  // Toggle read-only state when the 4th tile is clicked
-  const handleTileClick = () => {
-    setIsReadOnly((prevState) => !prevState);  // Toggle the read-only state
+  const handleTextInputChange = (field: string, value: string) => {
+    formik.setFieldValue(field, value); // Update Formik's internal state
+    dispatch(updateForm({ ...formik.values, [field]: value })); // Update Redux state
   };
 
   return (
-    <div>
-      <div onClick={handleTileClick}>
-        {/* This tile is clickable to toggle read-only mode */}
-        <div className="tile">Tile 4</div>
-      </div>
-
-      <form onSubmit={handleSubmit}>
+    <Form onSubmit={formik.handleSubmit} data-testid="form">
+      <FlexGrid>
         <Row>
-          <Column>
+          <Column lg={4}>
             <Dropdown
               id="dropdown1"
-              label="Dropdown 1"
-              titleText="Dropdown 1 Title"
-              items={['Option 1', 'Option 2', 'Option 3']}
-              selectedItem={dropdown1}
-              onChange={({ selectedItem }) => setDropdown1(selectedItem ?? '')}
+              label="Gender"
+              titleText="Select an option"
+              items={['Male', 'Female', 'Other']}
+              selectedItem={formik.values.dropdown1}
+              onChange={({ selectedItem }) => handleDropdownChange('dropdown1', selectedItem as string)}
               disabled={isReadOnly}
+              data-testid="dropdown1"
             />
           </Column>
-          <Column>
+          <Column lg={4}>
             <Dropdown
               id="dropdown2"
-              label="Dropdown 2"
-              titleText="Dropdown 2 Title"
-              items={['Option A', 'Option B', 'Option C']}
-              selectedItem={dropdown2}
-              onChange={({ selectedItem }) => setDropdown2(selectedItem ?? '')}
+              label="Department"
+              titleText="Select an option"
+              items={['CSE', 'ECE', 'ISE']}
+              selectedItem={formik.values.dropdown2}
+              onChange={({ selectedItem }) => handleDropdownChange('dropdown2', selectedItem as string)}
               disabled={isReadOnly}
+              data-testid="dropdown2"
             />
           </Column>
         </Row>
         <Row>
-          <Column>
+          <Column lg={4}>
             <TextInput
               id="textInput1"
-              labelText="Text Input 1"
-              value={textInput1}
-              onChange={(e) => setTextInput1(e.target.value)}
+              labelText="Name"
+              value={formik.values.textInput1}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              invalid={formik.touched.textInput1 && !!formik.errors.textInput1}
+              invalidText={formik.errors.textInput1}
               disabled={isReadOnly}
+              data-testid="textInput1"
             />
           </Column>
-          <Column>
+          <Column lg={4}>
             <TextInput
               id="textInput2"
-              labelText="Text Input 2"
-              value={textInput2}
-              onChange={(e) => setTextInput2(e.target.value)}
+              labelText="Email"
+              type="email"
+              value={formik.values.textInput2}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              invalid={formik.touched.textInput2 && !!formik.errors.textInput2}
+              invalidText={formik.errors.textInput2}
               disabled={isReadOnly}
+              data-testid="textInput2"
             />
           </Column>
         </Row>
         <Row>
-          <Column>
+          <Column lg={4}>
             <TextInput
-              id="textInputButton"
-              labelText="Text Input with Button"
-              value={textInputButton}
-              onChange={(e) => setTextInputButton(e.target.value)}
+              id="textInputAddress"
+              labelText="Address"
+              placeholder="Enter your address"
+              type="text"
+              value={formik.values.textInputAddress} // Bind the Address input value to Formik's state
+              onChange={e => handleTextInputChange('textInputAddress', e.target.value)} // Handle change and dispatch to Redux
+              onBlur={formik.handleBlur}
+              invalid={formik.touched.textInputAddress && !!formik.errors.textInputAddress}
+              invalidText={formik.errors.textInputAddress}
               disabled={isReadOnly}
+              data-testid="textInputAddress"
             />
-            <Button onClick={() => console.log(textInputButton)} disabled={isReadOnly}>
-              Button
-            </Button>
           </Column>
         </Row>
-        {/* Render submit button only if the form is not in read-only mode */}
         {!isReadOnly && (
-          <Button type="submit">
-            Submit
-          </Button>
+          <Row>
+            <Column lg={4}>
+              <Button type="submit" kind="primary" data-testid="submitButton">
+                Submit
+              </Button>
+            </Column>
+          </Row>
         )}
-      </form>
-    </div>
+      </FlexGrid>
+    </Form>
   );
 };
 
-export default Page;
+export default FormComponent;

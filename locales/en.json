@@ -1,9 +1,4 @@
 {
-  "language": "Language",
-  "english": "English",
-  "spanish": "Spanish",
-  "french": "French",
-  "dashboard": {
     "dashboard": "Dashboard",
     "archive": "Archive",
     "products": "Products",
@@ -12,7 +7,5 @@
     "admin": "Admin",
     "manageUsers": "Manage Users",
     "settings": "Settings",
-    "featureUnavailable": "Feature Unavailable",
-    "close": "Close"
+    "featureUnavailable": "Feature unavailable"
   }
-}

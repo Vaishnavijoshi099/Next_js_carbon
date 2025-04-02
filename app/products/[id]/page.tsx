@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { Tile } from '@carbon/react';
 import './productDetails.scss';
-import '/app/navbar.scss';
 
 interface Product {
   id: number;

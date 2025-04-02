@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import './table.scss';
-import '/app/navbar.scss';
+import '../navbar.scss';
 
 import {
     DataTable,
@@ -24,7 +23,7 @@ import {
     TableSelectRow,
     Modal,
 } from '@carbon/react';
-import { TrashCan, Save, Download } from '@carbon/icons-react';
+import {  Save} from '@carbon/icons-react';
 import Link from 'next/link';
 
 

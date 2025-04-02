@@ -2,9 +2,9 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 import Head from 'next/head';
-import { Loading, ContentSwitcher, Switch, FlexGrid, Row, Column, Tile } from '@carbon/react';
+import { Loading, Tile } from '@carbon/react';
 import './products.scss';
-import '/app/navbar.scss';
+import '../navbar.scss';
 
 
 interface Product {
@@ -51,14 +51,10 @@ export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedFilter, setSelectedFilter] = useState<string>('all');
-  const [language, setLanguage] = useState<string>('en'); // Default language is English
   const [translations, setTranslations] = useState<any>({});
   const router = useRouter();
 
- 
 
-  // Fetch product data
   useEffect(() => {
     async function fetchProducts() {
       try {

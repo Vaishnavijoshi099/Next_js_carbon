@@ -1,72 +1,55 @@
 @use '@carbon/react' as *;
 @use '@carbon/colors' as *;
-@use '@carbon/layout' as *;
-@use '@carbon/type' as *;
 
-#heading1{
-    margin-top: $spacing-06;
-    margin-left: $spacing-05;
-  }
-
-  .rows{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    gap: $spacing-06;
-    margin-top: $spacing-09;
-  }
-  .cols{
-    padding: $spacing-05;
-    width: 300px;
+#heading1 {
+  margin-top: $spacing-06;
+  margin-left: $spacing-05;
 }
- #heading4{
-    margin-top: $spacing-05;
-    }
 
+.rows {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: $spacing-06;
+}
 
-    .language-selector {
-      position: fixed;
-      top: 100px;
-      right: 20px;
-      z-index: 1000;
-      background-color: transparent;
-      padding: 5px;
-      margin-left: 700px;
-    }
-    
-    .language-selector select {
-      background-color: transparent;
-      color: $layer-selected-inverse;
-      border: $spacing-01 solid #D6D6D6;
-      padding: $spacing-03 $spacing-05;
-      font-size: $spacing-05;
-      font-weight: 400;
-      cursor: pointer;
-      border-radius: $spacing-02;
-      appearance: none;
-      width: 150px;
-      text-align: center;
-      position: relative;
-    }
-    
-    .language-selector select:focus {
-      outline: none;
-      border-color: $border-interactive;
-    }
-    
-    .language-selector select option {
-      background-color: $background;
-      color: $layer-selected-inverse ;
-    }
-    
-    .language-selector::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      border-left: $spacing-02 solid transparent;
-      border-right: $spacing-02 solid transparent;
-      border-top: $spacing-02 solid $layer-selected-inverse;
-    }
-    
+.cols {
+  padding: $spacing-05;
+  width: 300px;
+}
+
+#heading4 {
+  margin-top: $spacing-05;
+}
+
+#language-dropdown {
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  margin-left: 1200px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 30px;
+  transition: border-color 0.2s ease;
+}
+
+#language-dropdown:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+#language-dropdown:hover {
+  border-color: #888;
+}
+
+label[for="language-dropdown"] {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #555;
+  display: inline-block;
+}
